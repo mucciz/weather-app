@@ -1,0 +1,23 @@
+<div *ngIf="resultFound()">
+  <h1 class="center">Current Humidity data for Longitude {{ IHumidity.longitude }}, Latitude{{ IHumidity.latitude }}</h1>
+  <mat-card
+    *ngFor="let item of IHumidity.hourly.time | slice: 6: 19;; index as i"
+    class="mat-elevation-z18"
+  >
+    <mat-card-header>
+      <mat-card-title>
+        <h2>{{ item | date: "MMM d, y, h:mm:ss a" }}</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <span> Relative Humidity: {{ IHumidity.hourly.relativehumidity_2m[i] }} </span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div *ngIf="!resultFound()">
+  <h1 class="center">{{ "Failed to get weather." }}</h1>
+</div>
