@@ -1,0 +1,52 @@
+<div *ngIf="lat && lon">
+    <h1>
+        Current weather data for longitude {{ lon }}, latitude {{ lat }}
+    </h1>
+    <table *ngIf='resultFound()'>
+        <tbody>
+          <tr>
+            <td>
+              <h3>Current Temperature:</h3>
+            </td>
+            <td>
+              <h3>{{ICurrentWeather.current_weather?.tempertaure}}<sup>o</sup>C</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h3>Windspeed</h3>
+            </td>
+            <td>
+              <h3>{{ICurrentWeather.current_weather.windspeed}}</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h3>Wind Direction</h3>
+            </td>
+            <td>
+              <h3>{{ICurrentWeather.current_weather.winddirection}}</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h3>Weather Code</h3>
+            </td>
+            <td>
+              <h3>{{ICurrentWeather.current_weather.weathercode}}mb</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h3>Time</h3>
+            </td>
+            <td>
+              <h3>{{ICurrentWeather.current_weather.time}}</h3>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <div *ngIf='!resultFound()'>
+      <h1 class="center">{{'Failed to get weather.'}}</h1>
+    </div>
+</div>
